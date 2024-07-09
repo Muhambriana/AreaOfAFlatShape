@@ -27,9 +27,9 @@ class SquareActivity : AppCompatActivity() {
     }
 
     private fun initFunction() {
-        // Init EditText that will be side one form
+        // Init EditText that will be form side one of Square
         val edSideOne: EditText = findViewById(R.id.ed_side_one)
-        // Init EditText that will be side two form
+        // Init EditText that will be form side two of Square
         val edSideTwo: EditText = findViewById(R.id.ed_side_two)
         // Init Button to calculate
         val btnResult: Button = findViewById(R.id.btn_result)
