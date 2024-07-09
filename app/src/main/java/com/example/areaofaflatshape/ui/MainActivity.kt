@@ -12,6 +12,7 @@ import com.example.areaofaflatshape.ui.flatshape.CircleActivity
 import com.example.areaofaflatshape.ui.flatshape.RectangleActivity
 import com.example.areaofaflatshape.ui.flatshape.SquareActivity
 import com.example.areaofaflatshape.ui.flatshape.TriangleActivity
+import com.example.areaofaflatshape.ui.quiz.QuizActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +37,8 @@ class MainActivity : AppCompatActivity() {
         val btnTriangle: Button = findViewById(R.id.btn_triangle)
         // Init button that will move intent to CircleActivity
         val btnCircle: Button = findViewById(R.id.btn_circle)
+        // Init button that will move intent to QuizActivity
+        val btnQuiz: Button = findViewById(R.id.btn_quiz)
 
         /*
             Set Button Listener. The button will execute all code inside { } when clicked
@@ -51,6 +54,9 @@ class MainActivity : AppCompatActivity() {
         }
         btnCircle.setOnClickListener {
             startIntent(CircleActivity::class.java)
+        }
+        btnQuiz.setOnClickListener {
+            startIntent(QuizActivity::class.java)
         }
     }
 

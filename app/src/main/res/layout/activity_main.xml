@@ -11,6 +11,7 @@
         android:id="@+id/btn_square"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:backgroundTint="@color/light_blue"
         android:text="@string/square_label"
         app:layout_constraintTop_toTopOf="parent"
@@ -41,6 +42,16 @@
         android:backgroundTint="@color/light_blue"
         android:text="@string/circle_label"
         app:layout_constraintTop_toBottomOf="@+id/btn_triangle"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@+id/btn_quiz"/>
+
+    <Button
+        android:id="@+id/btn_quiz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="Quiz"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_circle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
