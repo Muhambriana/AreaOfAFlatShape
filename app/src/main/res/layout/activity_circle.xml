@@ -7,4 +7,40 @@
     android:layout_height="match_parent"
     tools:context=".ui.flatshape.CircleActivity">
 
+    <EditText
+        android:id="@+id/ed_radius"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:hint="Jari-Jari"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Autofill,autoFillHints" />
+
+    <Button
+        android:id="@+id/btn_result"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/design_default_color_secondary"
+        android:text="@string/result"
+        app:layout_constraintEnd_toEndOf="@+id/ed_radius"
+        app:layout_constraintStart_toStartOf="@+id/ed_radius"
+        app:layout_constraintTop_toBottomOf="@+id/ed_radius" />
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="30sp"
+        android:visibility="gone"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/btn_result"
+        />
+    
 </androidx.constraintlayout.widget.ConstraintLayout>
