@@ -7,13 +7,40 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/button_square"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:backgroundTint="@color/light_blue"
+        android:text="@string/square_label"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/button_rectangle" />
+
+    <Button
+        android:id="@+id/button_rectangle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/light_blue"
+        android:text="@string/rectangle_label"
+        app:layout_constraintTop_toBottomOf="@+id/button_square"
+        app:layout_constraintBottom_toTopOf="@id/button_triangle"/>
+
+    <Button
+        android:id="@+id/button_triangle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/light_blue"
+        android:text="@string/triangle_label"
+        app:layout_constraintTop_toBottomOf="@+id/button_rectangle"
+        app:layout_constraintBottom_toTopOf="@id/button_circle"/>
+
+    <Button
+        android:id="@+id/button_circle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/light_blue"
+        android:text="@string/circle_label"
+        app:layout_constraintTop_toBottomOf="@+id/button_triangle"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
