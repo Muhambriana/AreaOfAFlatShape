@@ -8,29 +8,17 @@
     tools:context=".ui.flatshape.SquareActivity">
 
     <EditText
-        android:id="@+id/ed_side_one"
+        android:id="@+id/ed_side"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:hint="Sisi 1"
+        android:hint="Sisi"
         android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="Autofill,autoFillHints" />
-
-    <EditText
-        android:id="@+id/ed_side_two"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Sisi 2"
-        android:inputType="numberDecimal"
-        app:layout_constraintEnd_toEndOf="@+id/ed_side_one"
-        app:layout_constraintStart_toStartOf="@+id/ed_side_one"
-        app:layout_constraintTop_toBottomOf="@+id/ed_side_one"
         tools:ignore="Autofill,autoFillHints" />
 
     <Button
@@ -40,9 +28,9 @@
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/design_default_color_secondary"
         android:text="@string/result"
-        app:layout_constraintEnd_toEndOf="@+id/ed_side_two"
-        app:layout_constraintStart_toStartOf="@+id/ed_side_two"
-        app:layout_constraintTop_toBottomOf="@+id/ed_side_two" />
+        app:layout_constraintEnd_toEndOf="@+id/ed_side"
+        app:layout_constraintStart_toStartOf="@+id/ed_side"
+        app:layout_constraintTop_toBottomOf="@+id/ed_side" />
 
     <TextView
         android:id="@+id/tv_result"

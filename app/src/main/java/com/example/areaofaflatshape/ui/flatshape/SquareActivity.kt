@@ -28,9 +28,7 @@ class SquareActivity : AppCompatActivity() {
 
     private fun initFunction() {
         // Init EditText that will be form side one of Square
-        val edSideOne: EditText = findViewById(R.id.ed_side_one)
-        // Init EditText that will be form side two of Square
-        val edSideTwo: EditText = findViewById(R.id.ed_side_two)
+        val edSide: EditText = findViewById(R.id.ed_side)
         // Init Button to calculate
         val btnResult: Button = findViewById(R.id.btn_result)
         // Init TextView for showing the result
@@ -39,20 +37,18 @@ class SquareActivity : AppCompatActivity() {
 
         // Set listener on button click
         btnResult.setOnClickListener {
-            // If edSideOne or edSideTwo not filled yet. Than show toast message
-            if (edSideOne.text.isNullOrBlank() || edSideTwo.text.isNullOrBlank()) {
+            // If edSide not filled yet. Than show toast message
+            if (edSide.text.isNullOrBlank()) {
                 // Show message as toast
-                Toast.makeText(this, "Harap Isi Kedua Sisi Terlebih Dahulu", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Harap Isi Sisi Terlebih Dahulu", Toast.LENGTH_LONG).show()
 
                 return@setOnClickListener // This will return value to setOnClickListener and stop the code (not execute all code below)
             }
 
-            // Get the side one value
-            val sideOne: Double = edSideOne.text?.toString()?.toDouble() ?: 0.0
-            // Get the side one value
-            val sideTwo: Double = edSideTwo.text?.toString()?.toDouble() ?: 0.0
-            // Calculate side one and side two value with formula  (S X S)
-            val result: Double = sideOne * sideTwo
+            // Get the side value
+            val side: Double = edSide.text?.toString()?.toDouble() ?: 0.0
+            // Calculate side value with formula  (S X S)
+            val result: Double = side * side
 
             // Make the TextView visible
             tvResult.visibility = View.VISIBLE
