@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AreaOfAFlatShape</string>
+    <string name="square_label">Persegi</string>
+    <string name="rectangle_label">Persegi Panjang</string>
+    <string name="triangle_label">Segitiga</string>
+    <string name="circle_label">Lingkaran</string>
 </resources>
