@@ -45,7 +45,7 @@ class CircleActivity : AppCompatActivity() {
                 return@setOnClickListener // This will return value to setOnClickListener and stop the code (not execute all code below)
             }
 
-            // Get the side one value
+            // Get the radius value
             val radius: Double = edRadius.text?.toString()?.toDouble() ?: 0.0
             // Calculate radius value with formula  (3.14 * (R*R))
             val result: Double = 3.14 * (radius * radius)
