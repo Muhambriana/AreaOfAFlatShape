@@ -37,9 +37,11 @@ class SquareActivity : AppCompatActivity() {
         val tvResult: TextView = findViewById(R.id.tv_result)
 
 
+        // Set listener on button click
         btnResult.setOnClickListener {
             // If edSideOne or edSideTwo not filled yet. Than show toast message
             if (edSideOne.text.isNullOrBlank() || edSideTwo.text.isNullOrBlank()) {
+                // Show message as toast
                 Toast.makeText(this, "Harap Isi Kedua Sisi Terlebih Dahulu", Toast.LENGTH_LONG).show()
 
                 return@setOnClickListener // This will return value to setOnClickListener and stop the code (not execute all code below)
