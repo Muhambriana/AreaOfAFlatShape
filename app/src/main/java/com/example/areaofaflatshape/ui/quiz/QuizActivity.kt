@@ -12,7 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.areaofaflatshape.R
 
 class QuizActivity : AppCompatActivity() {
-    private var length: Double = 30.0
+    private var length: Double = 50.0
     private var width: Double = 30.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
