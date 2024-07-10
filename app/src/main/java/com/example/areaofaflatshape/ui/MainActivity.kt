@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.areaofaflatshape.R
+import com.example.areaofaflatshape.databinding.ActivityMainBinding
 import com.example.areaofaflatshape.ui.flatshape.CircleActivity
 import com.example.areaofaflatshape.ui.flatshape.RectangleActivity
 import com.example.areaofaflatshape.ui.flatshape.SquareActivity
@@ -15,11 +16,17 @@ import com.example.areaofaflatshape.ui.flatshape.TriangleActivity
 import com.example.areaofaflatshape.ui.quiz.QuizActivity
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var activityMainBinding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Assign value for binding
+        activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        // SetContentView by calling binding.root
+        setContentView(activityMainBinding.root)
+        ViewCompat.setOnApplyWindowInsetsListener(activityMainBinding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -29,33 +36,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initButton() {
-        // Init button that will move intent to SquareActivity
-        val btnSquare: Button = findViewById(R.id.btn_square)
-        // Init button that will move intent to RectangleActivity
-        val btnRectangle: Button = findViewById(R.id.btn_rectangle)
-        // Init button that will move intent to TriangleActivity
-        val btnTriangle: Button = findViewById(R.id.btn_triangle)
-        // Init button that will move intent to CircleActivity
-        val btnCircle: Button = findViewById(R.id.btn_circle)
-        // Init button that will move intent to QuizActivity
-        val btnQuiz: Button = findViewById(R.id.btn_quiz)
-
         /*
             Set Button Listener. The button will execute all code inside { } when clicked
          */
-        btnSquare.setOnClickListener {
+        activityMainBinding.btnSquare.setOnClickListener {
             startIntent(SquareActivity::class.java)
         }
-        btnRectangle.setOnClickListener {
+        activityMainBinding.btnRectangle.setOnClickListener {
             startIntent(RectangleActivity::class.java)
         }
-        btnTriangle.setOnClickListener {
+        activityMainBinding.btnTriangle.setOnClickListener {
             startIntent(TriangleActivity::class.java)
         }
-        btnCircle.setOnClickListener {
+        activityMainBinding.btnCircle.setOnClickListener {
             startIntent(CircleActivity::class.java)
         }
-        btnQuiz.setOnClickListener {
+        activityMainBinding.btnQuiz.setOnClickListener {
             startIntent(QuizActivity::class.java)
         }
     }
