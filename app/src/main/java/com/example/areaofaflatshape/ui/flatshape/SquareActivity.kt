@@ -8,6 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.areaofaflatshape.databinding.ActivitySquareBinding
+import com.example.areaofaflatshape.utils.Formula
+import com.example.areaofaflatshape.utils.Formula.getAreaOfSquare
+import com.example.areaofaflatshape.utils.Helper
+import com.example.areaofaflatshape.utils.Helper.isValidEditTextForm
+import com.example.areaofaflatshape.utils.Helper.showShortToast
 
 class SquareActivity : AppCompatActivity() {
 
@@ -32,23 +37,30 @@ class SquareActivity : AppCompatActivity() {
     private fun initFunction() {
         // Set listener on button click
         squareBinding.btnResult.setOnClickListener {
-            // If edSide not filled yet. Than show toast message
-            if (squareBinding.edSide.text.isNullOrBlank()) {
-                // Show message as toast
-                Toast.makeText(this, "Harap Isi Sisi Terlebih Dahulu", Toast.LENGTH_LONG).show()
-
-                return@setOnClickListener // This will return value to setOnClickListener and stop the code (not execute all code below)
-            }
-
-            // Get the side value
-            val side: Double = squareBinding.edSide.text?.toString()?.toDouble() ?: 0.0
-            // Calculate side value with formula  (S X S)
-            val result: Double = side * side
-
-            // Make the TextView visible
-            squareBinding.tvResult.visibility = View.VISIBLE
-            // Set result value to TextView
-            squareBinding.tvResult.text = result.toString()
+            validateEditTextForm()
         }
+    }
+
+    private fun validateEditTextForm() {
+        // If edSide not filled yet. Than show toast message
+        if (!isValidEditTextForm(squareBinding.edSide)) {
+            // Show message as toast
+            showShortToast("Harap Isi Sisi Terlebih Dahulu")
+            return
+        }
+
+        calculate()
+    }
+
+    private fun calculate() {
+        // Get the side value
+        val side: Double = squareBinding.edSide.text?.toString()?.toDouble() ?: 0.0
+        // Calculate side value with formula  (S X S)
+        val result: Double = getAreaOfSquare(side)
+
+        // Make the TextView visible
+        squareBinding.tvResult.visibility = View.VISIBLE
+        // Set result value to TextView
+        squareBinding.tvResult.text = result.toString()
     }
 }

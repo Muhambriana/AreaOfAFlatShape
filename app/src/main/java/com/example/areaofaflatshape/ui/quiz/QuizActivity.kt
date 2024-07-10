@@ -11,6 +11,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.areaofaflatshape.R
 import com.example.areaofaflatshape.databinding.ActivityQuizBinding
+import com.example.areaofaflatshape.utils.Formula
+import com.example.areaofaflatshape.utils.Helper
+import com.example.areaofaflatshape.utils.Helper.isValidEditTextForm
+import com.example.areaofaflatshape.utils.Helper.showShortToast
 
 class QuizActivity : AppCompatActivity() {
 
@@ -36,17 +40,24 @@ class QuizActivity : AppCompatActivity() {
 
     private fun initFunction() {
         quizBinding.btnResult.setOnClickListener {
-            if (quizBinding.edYourAnswer.text.isNullOrBlank()) {
-                Toast.makeText(this, "Isi Jawaban Terlebih Dahulu", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            val isCorrectAnswer = quizBinding.edYourAnswer.text.toString().toDouble() == (length * width)
-            val intent = Intent(this, QuizResultActivity::class.java)
-            intent.putExtra(IS_CORRECT_ANSWER, isCorrectAnswer)
-
-            startActivity(intent)
+            validateEditTextForm()
         }
+    }
+
+    private fun validateEditTextForm() {
+        if (!isValidEditTextForm(quizBinding.edYourAnswer)) {
+            showShortToast("Isi Jawaban Terlebih Dahulu")
+            return
+        }
+        startIntentWithData()
+    }
+
+    private fun startIntentWithData() {
+        val isCorrectAnswer = quizBinding.edYourAnswer.text.toString().toDouble() == Formula.getAreaOfRectangle(width, length)
+        val intent = Intent(this, QuizResultActivity::class.java)
+        intent.putExtra(IS_CORRECT_ANSWER, isCorrectAnswer)
+
+        startActivity(intent)
     }
 
     companion object {

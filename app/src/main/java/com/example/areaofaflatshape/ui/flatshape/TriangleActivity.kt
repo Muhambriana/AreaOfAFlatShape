@@ -12,6 +12,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.areaofaflatshape.R
 import com.example.areaofaflatshape.databinding.ActivityTriangleBinding
+import com.example.areaofaflatshape.utils.Formula
+import com.example.areaofaflatshape.utils.Helper
+import com.example.areaofaflatshape.utils.Helper.isValidEditTextForm
+import com.example.areaofaflatshape.utils.Helper.showShortToast
 
 class TriangleActivity : AppCompatActivity() {
 
@@ -36,24 +40,38 @@ class TriangleActivity : AppCompatActivity() {
     private fun initFunction() {
         // Set listener on button click
         triangleBinding.btnResult.setOnClickListener {
-            // If base or height not filled yet. Than show toast message
-            if (triangleBinding.edBase.text.isNullOrBlank() || triangleBinding.edHeight.text.isNullOrBlank()) {
-                // Show message as toast
-                Toast.makeText(this, "Harap Isi Alas Dan Tinggi Terlebih Dahulu", Toast.LENGTH_LONG).show()
-                return@setOnClickListener // This will return value to setOnClickListener and stop the code (not execute all code below)
-            }
-
-            // Get the base value
-            val base: Double = triangleBinding.edBase.text?.toString()?.toDouble() ?: 0.0
-            // Get the height value
-            val height: Double = triangleBinding.edHeight.text?.toString()?.toDouble() ?: 0.0
-            // Calculate base and height value with formula  (B X H) / 2
-            val result: Double = (base * height) / 2
-
-            // Make the TextView visible
-            triangleBinding.tvResult.visibility = View.VISIBLE
-            // Set result value to TextView
-            triangleBinding.tvResult.text = result.toString()
+            validateEditTextForm()
         }
+    }
+
+    private fun validateEditTextForm() {
+        // If base or height not filled yet. Than show toast message
+        if (!isValidEditTextForm(triangleBinding.edBase)) {
+            // Show message as toast
+            showShortToast("Harap Isi Alas Terlebih Dahulu")
+            return
+        }
+        if (!isValidEditTextForm(triangleBinding.edHeight)) {
+            // Show message as toast
+            showShortToast("Harap Isi Tinggi Terlebih Dahulu")
+            return
+        }
+
+        calculate()
+    }
+
+
+    private fun calculate() {
+        // Get the base value
+        val base: Double = triangleBinding.edBase.text?.toString()?.toDouble() ?: 0.0
+        // Get the height value
+        val height: Double = triangleBinding.edHeight.text?.toString()?.toDouble() ?: 0.0
+        // Calculate base and height value with formula  (B X H) / 2
+        val result: Double = Formula.getAreaOfTriangle(base, height)
+
+        // Make the TextView visible
+        triangleBinding.tvResult.visibility = View.VISIBLE
+        // Set result value to TextView
+        triangleBinding.tvResult.text = result.toString()
     }
 }

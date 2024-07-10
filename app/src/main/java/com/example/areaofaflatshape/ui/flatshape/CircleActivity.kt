@@ -2,12 +2,14 @@ package com.example.areaofaflatshape.ui.flatshape
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.areaofaflatshape.databinding.ActivityCircleBinding
+import com.example.areaofaflatshape.utils.Formula.getAreaOfCircle
+import com.example.areaofaflatshape.utils.Helper.isValidEditTextForm
+import com.example.areaofaflatshape.utils.Helper.showShortToast
 
 class CircleActivity : AppCompatActivity() {
 
@@ -32,23 +34,29 @@ class CircleActivity : AppCompatActivity() {
     private fun initFunction() {
         // Set listener on button click
         circleBinding.btnResult.setOnClickListener {
-            // If edRadius not filled yet. Than show toast message
-            if (circleBinding.edRadius.text.isNullOrBlank()) {
-                // Show message as toast
-                Toast.makeText(this, "Harap Isi Jari-Jari Terlebih Dahulu", Toast.LENGTH_LONG).show()
-
-                return@setOnClickListener // This will return value to setOnClickListener and stop the code (not execute all code below)
-            }
-
-            // Get the radius value
-            val radius: Double = circleBinding.edRadius.text?.toString()?.toDouble() ?: 0.0
-            // Calculate radius value with formula  (3.14 * (R*R))
-            val result: Double = 3.14 * (radius * radius)
-
-            // Make the TextView visible
-            circleBinding.tvResult.visibility = View.VISIBLE
-            // Set result value to TextView
-            circleBinding.tvResult.text = result.toString()
+            validateEditTextForm()
         }
     }
+
+    private fun validateEditTextForm() {
+        if (!isValidEditTextForm(circleBinding.edRadius)) {
+            showShortToast("Harap Isi Jari-Jari Terlebih Dahulu")
+            return
+        }
+
+        calculate()
+    }
+
+    private fun calculate() {
+        // Get the radius value
+        val radius: Double? = circleBinding.edRadius.text?.toString()?.toDouble()
+        // Calculate radius value with formula
+        val result = getAreaOfCircle(radius)
+
+        // Make the TextView visible
+        circleBinding.tvResult.visibility = View.VISIBLE
+        // Set result value to TextView
+        circleBinding.tvResult.text = result.toString()
+    }
+
 }

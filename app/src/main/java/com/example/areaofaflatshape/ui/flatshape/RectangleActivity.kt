@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.areaofaflatshape.databinding.ActivityRectangleBinding
+import com.example.areaofaflatshape.utils.Helper.isValidEditTextForm
+import com.example.areaofaflatshape.utils.Helper.showShortToast
 
 class RectangleActivity : AppCompatActivity() {
 
@@ -32,24 +34,37 @@ class RectangleActivity : AppCompatActivity() {
     private fun initFunction() {
         // Set listener on button click
         rectangleBinding.btnResult.setOnClickListener {
-            // If long or width not filled yet. Than show toast message
-            if (rectangleBinding.edLong.text.isNullOrBlank() || rectangleBinding.edWidth.text.isNullOrBlank()) {
-                // Show message as toast
-                Toast.makeText(this, "Harap Isi Panjang Dan Lebar Terlebih Dahulu", Toast.LENGTH_LONG).show()
-                return@setOnClickListener // This will return value to setOnClickListener and stop the code (not execute all code below)
-            }
-
-            // Get the long value
-            val long: Double = rectangleBinding.edLong.text?.toString()?.toDouble() ?: 0.0
-            // Get the width value
-            val width: Double = rectangleBinding.edWidth.text?.toString()?.toDouble() ?: 0.0
-            // Calculate long and width value with formula  (L X W)
-            val result: Double = long * width
-
-            // Make the TextView visible
-            rectangleBinding.tvResult.visibility = View.VISIBLE
-            // Set result value to TextView
-            rectangleBinding.tvResult.text = result.toString()
+            validateEditTextForm()
         }
+    }
+
+    private fun validateEditTextForm() {
+        // If long or width not filled yet. Than show toast message
+        if (!isValidEditTextForm(rectangleBinding.edLong)) {
+            // Show message as toast
+            showShortToast("Harap Isi Panjang Terlebih Dahulu")
+            return
+        }
+        if (!isValidEditTextForm(rectangleBinding.edWidth)) {
+            // Show message as toast
+            showShortToast("Harap Isi Lebar Terlebih Dahulu")
+            return
+        }
+
+        calculate()
+    }
+
+    private fun calculate() {
+        // Get the long value
+        val long: Double = rectangleBinding.edLong.text?.toString()?.toDouble() ?: 0.0
+        // Get the width value
+        val width: Double = rectangleBinding.edWidth.text?.toString()?.toDouble() ?: 0.0
+        // Calculate long and width value with formula  (L X W)
+        val result: Double = long * width
+
+        // Make the TextView visible
+        rectangleBinding.tvResult.visibility = View.VISIBLE
+        // Set result value to TextView
+        rectangleBinding.tvResult.text = result.toString()
     }
 }
