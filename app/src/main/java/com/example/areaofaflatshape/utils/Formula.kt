@@ -1,7 +1,5 @@
 package com.example.areaofaflatshape.utils
 
-import kotlin.time.times
-
 object Formula {
     fun getAreaOfCircle(radius: Double?): Double {
         // If radius equals null, than return 0.0

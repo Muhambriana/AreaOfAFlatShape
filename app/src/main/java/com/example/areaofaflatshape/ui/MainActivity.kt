@@ -2,12 +2,10 @@ package com.example.areaofaflatshape.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.areaofaflatshape.R
 import com.example.areaofaflatshape.databinding.ActivityMainBinding
 import com.example.areaofaflatshape.ui.flatshape.CircleActivity
 import com.example.areaofaflatshape.ui.flatshape.RectangleActivity
